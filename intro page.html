@@ -1,0 +1,124 @@
+<html>
+    <title> intro </title>
+    <head>
+        <link rel="stylesheet" href="intro style.css">
+        <!-- <img src="https://i.pinimg.com/originals/48/85/12/488512487549d429a929eb29d453f44a.gif" height="600" width="350"> -->
+        <style>
+            .typing-animation {
+                text-align: center;
+            }
+    
+            #typing-text {
+                display: inline-block;
+                font-size: 60px;
+                font-weight: bold;
+                border-right: 2px solid #000;
+                white-space: nowrap;
+                overflow: hidden;
+                animation: typing 2s steps(20, end), blink-caret .5s step-end infinite;
+            }
+    
+            @keyframes typing {
+                from { width: 0 }
+                to { width: 100% }
+            }
+    
+            @keyframes blink-caret {
+                from, to { border-color: transparent }
+                50% { border-color: #000 }
+            }
+            #center-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 300px;
+                position:fixed;
+                margin: auto;
+                display: block;
+                
+            }
+            #click-button {
+                padding: 10px 20px;
+                font-size: 20px;
+                font-weight: bold;
+                background-color: #000;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                /* position: fixed; */
+            }
+        </style>
+
+</head>
+    <body>
+        <div>
+            <img src="https://i.pinimg.com/originals/48/85/12/488512487549d429a929eb29d453f44a.gif"
+             alt="An example image" 
+            style="float:left; margin-right: 20px;">
+            </div>
+            
+        </head>
+            <div class="typing-animation">
+                <p id="typing-text"></p>
+            </div>
+        
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                var words = ['Hii!! I am winnie the pooh i want to find my honey treasure will you help me?? please'],
+                part,
+                i = 0,
+                offset = 0,
+                len = words.length,
+                forwards = true,
+                skip_count = 0,
+                skip_delay = 15,
+                speed = 70;
+        
+                var wordflick = function () {
+                  setInterval(function () {
+                    if (forwards) {
+                      if (offset >= words[i].length) {
+                        ++skip_count;
+                        if (skip_count == skip_delay) {
+                          forwards = false;
+                          skip_count = 0;
+                        }
+                      }
+                    }
+                    else {
+                      if (offset == 0) {
+                        forwards = true;
+                        i++;
+                        offset = 0;
+                        if (i >= len) {
+                          i = 0;
+                        }
+                      }
+                    }
+                    part = words[i].substr(0, offset);
+                    if (skip_count == 0) {
+                      if (forwards) {
+                        offset++;
+                      }
+                      else {
+                        offset--;
+                      }
+                    }
+                    $('#typing-text').text(part);
+                  },speed);
+                };
+        
+                $(document).ready(function () {
+                  wordflick();
+                });
+                </script>
+                
+            </script>
+            <div id="center-button">
+                <a href="{{url_for('index')}}">
+                <button id="click-button">Next</button>
+                </a>
+            </div>
+</body>
+</html>

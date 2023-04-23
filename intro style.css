@@ -1,0 +1,21 @@
+
+html {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    height: 100%;
+  }
+  .word {
+    margin: auto;
+    color:black;
+    font: 200 normal 1.5em 'tahoma';
+    /* text-shadow: 5px 2px #222324, 2px 4px #222324, 3px 5px #222324; */
+  }
+.button
+{
+    padding:5px;
+    border-radius:2px;
+    border: 1px solid black;
+    position: fixed;
+}
